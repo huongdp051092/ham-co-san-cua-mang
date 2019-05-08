@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bài 1</h1>
+    <label id="result"></label><br>
+    <label id="result1"></label>
+
+    <h1>Bài 2</h1>
+    <input id="input" type="text" placeholder="Nhập vào 1 số"/>
+    <button type="button" onclick="bai2()">Chèn dấu (-) giữa 2 số chẵn</button><br>
+    <label id="result2"></label>
+
+    <h1>Bài 3</h1>
+    <input id="input3" type="text" placeholder="Nhập vào 1 chuỗi" />
+    <button type="button" onclick="bai3()">Chuyển đổi ký tự</button><br>
+    <label id="result3"></label>
+    <script>
+        function bai1() {
+            let myColor = ["Red", "Green", "White", "Black"];
+            document.getElementById("result").innerHTML = myColor.toString();
+            document.getElementById("result1").innerHTML = myColor.join();
+        }
+        bai1();
+
+        function bai2() {
+            let str = document.getElementById("input").value;
+            let result = [str[0]];
+            
+            for (let x = 1; x < str.length; x++) {
+                if((str[x-1]%2 === 0)&&(str[x]%2 === 0))
+                {
+                    result.push("-", str[x]);
+                }
+                else
+                {
+                    result.push(str[x]);
+                }
+            }
+            document.getElementById("result2").innerHTML = result.join("");
+        }
+        
+        function bai3() {
+            let UPPER = "AĂÂBCDĐEÊFGHIJKLMNOÔƠPQRSTUƯVWXYZ";
+            let LOWER = "aăâbcdđeêfghijklmnoôơpqrstuưvwxyz";
+            let str = document.getElementById("input3").value;
+            let result = [];
+
+            for(var x=0; x<str.length; x++)
+            {
+                if(UPPER.indexOf(str[x]) !== -1) {
+                    result.push(str[x].toLowerCase());
+                }
+                else if(LOWER.indexOf(str[x]) !== -1)
+                {
+                    result.push(str[x].toUpperCase());
+                }
+                else
+                {
+                    result.push(str[x]);
+                }
+            }
+            document.getElementById("result3").innerHTML = result.join('');
+        }
+    </script>
+</body>
+</html>
